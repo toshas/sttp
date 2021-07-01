@@ -1,0 +1,12 @@
+matplotlib
+numpy
+opt_einsum
+packaging
+Pillow
+pyyaml
+tensorboard
+torch-fidelity
+torch-householder
+torch>=1.9
+torchvision
+wandb

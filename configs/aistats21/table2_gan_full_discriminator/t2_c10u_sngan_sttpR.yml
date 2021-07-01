@@ -1,0 +1,66 @@
+experiment: gan
+experiment_name: __FILENAMEBASE__
+log_dir: __FILENAMEBASE__
+dataset: cifar10
+conditioning: False
+batch_size: 64
+batch_size_inference: 64
+num_training_steps: 100000
+num_log_images_steps: 5000
+num_log_sv_steps: 5000
+num_checkpoint_steps: 5000
+num_validation_images: 50000
+model_name: sngan
+model_preset: 32
+lr_sched: linear
+loss_name: hinge
+fidelity_leading_metric_name: inception_score_mean
+fidelity_kwargs:
+    batch_size: 32
+    isc: True
+    fid: True
+    kid: True
+    ppl: False
+    model_z_size: 128
+    verbose: False
+z_type: normal
+z_interp_mode: slerp_any
+use_canonical_householder: True
+
+g_kwargs: {}
+d_kwargs: {}
+
+g_ema: False
+
+g_ops_name: regular
+g_ops_use_factory: False
+
+g_spectral_compensation_frequency: 0
+g_spectral_penalty: Null
+
+g_optimizer: adam
+g_optimizer_kwargs:
+    lr: 2e-4
+    betas: [0.0, 0.9]
+
+d_ops_name: regular
+d_ops_use_factory: True
+d_ops_factory_name: sttp
+d_ops_factory_stiefel_name: householder
+d_ops_factory_rank: 64
+d_ops_factory_kwargs:
+    spectrum_eye: False
+    init_seed: 2020
+    init_mode: qr_eye_randn
+    init_std: 1e-4
+d_ops_factory_ignored: []
+
+d_spectral_compensation_frequency: 0
+d_spectral_penalty: d_optimal
+d_spectral_penalty_weight: 1.0
+
+d_optimizer: adam
+d_optimizer_kwargs:
+    lr: 2e-4
+    betas: [0.0, 0.9]
+d_step_repeats: 5

@@ -1,0 +1,25 @@
+experiment: imgcls
+experiment_name: __FILENAMEBASE__
+log_dir: __FILENAMEBASE__
+
+dataset: cifar10
+batch_size: 128
+num_training_steps: 100000
+num_log_sv_steps: 5000
+num_checkpoint_steps: 5000
+lr_sched: linear
+use_canonical_householder: True
+
+model_name: wresnet_cifar
+model_name_specific: Null
+model_name_specific_kwargs: {}
+
+ops_use_factory: False
+
+optimizer: sgd
+optimizer_kwargs:
+    lr: 0.1
+    momentum: 0.9
+    dampening: 0
+    weight_decay: 0.0001
+    nesterov: False

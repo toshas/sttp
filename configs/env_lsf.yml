@@ -1,0 +1,13 @@
+root_datasets:
+  cifar10: /cluster/scratch/obukhova/datasets/torchvision
+  stl10_48: /cluster/scratch/obukhova/datasets/torchvision
+root_logs: /cluster/scratch/obukhova/logs
+root_wandb: /cluster/scratch/obukhova/logs_wandb
+dataset_download: True
+assert_env_set:
+    - CUDA_VISIBLE_DEVICES
+num_log_loss_steps: 10
+vis_truncate_singular_values: 32
+workers: 4
+workers_validation: 4
+wandb_project: sttp

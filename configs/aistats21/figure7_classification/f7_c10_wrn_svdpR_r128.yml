@@ -1,0 +1,37 @@
+experiment: imgcls
+experiment_name: __FILENAMEBASE__
+log_dir: __FILENAMEBASE__
+
+dataset: cifar10
+batch_size: 128
+num_training_steps: 100000
+num_log_sv_steps: 5000
+num_checkpoint_steps: 5000
+lr_sched: linear
+use_canonical_householder: True
+
+model_name: wresnet_cifar
+model_name_specific: Null
+model_name_specific_kwargs: {}
+
+ops_use_factory: True
+ops_factory_name: svdp
+ops_factory_stiefel_name: householder
+ops_factory_rank: 128
+ops_factory_kwargs:
+    spectrum_eye: False
+    init_seed: 2020
+    init_mode: qr_eye_randn
+    init_std: 1e-4
+ops_factory_ignored: []
+
+spectral_penalty: d_optimal
+spectral_penalty_weight: 1.0
+
+optimizer: sgd
+optimizer_kwargs:
+    lr: 0.1
+    momentum: 0.9
+    dampening: 0
+    weight_decay: 0.0001
+    nesterov: False
